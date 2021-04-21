@@ -15,9 +15,6 @@ def canUnlockAll(boxes):
         for i in keys:
             if i >= len(boxes):
                 keys.remove(i)
-                print("removed")
-                print(i)
-                print(keys)
         if iteration == len(boxes):
             return False
         iteration += 1
