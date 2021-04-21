@@ -8,13 +8,16 @@ def canUnlockAll(boxes):
     keys = [0]
     iteration = 0
     while len(keys) != len(boxes):
+        working_keys = keys.copy()
         for i in keys:
-            keys.extend(boxes[i])
-            keys = list(set(keys))
-            keys.sort()
+            working_keys.extend(boxes[i])
+            working_keys = list(set(working_keys))
+            working_keys.sort()
+        keys = working_keys.copy()
         for i in keys:
             if i >= len(boxes):
-                keys.remove(i)
+                working_keys.remove(i)
+        keys = working_keys.copy()
         if iteration == len(boxes):
             return False
         iteration += 1
