@@ -9,13 +9,14 @@ def canUnlockAll(boxes):
     iteration = 0
     while len(keys) != len(boxes):
         for i in keys:
+            if i >= len(boxes):
+                keys.remove(i)
+        for i in keys:
             keys.extend(boxes[i])
             keys = list(set(keys))
             keys.sort()
-        for i in keys:
-            if i >= len(boxes):
-                keys.remove(i)
-        if iteration == len(boxes) * 2:
+        print(keys)
+        if iteration == len(boxes):
             return False
         iteration += 1
     return True
