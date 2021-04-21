@@ -11,7 +11,7 @@ def canUnlockAll(boxes):
             new_keys.extend(boxes[i])
             new_keys = list(set(new_keys))
             new_keys.sort()
-        if iteration == len(boxes):
+        if iteration == len(boxes) * 2:
             return False
         keys = new_keys
         iteration += 1
