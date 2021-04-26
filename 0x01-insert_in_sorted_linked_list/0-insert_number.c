@@ -3,9 +3,10 @@
 #include "lists.h"
 
 /**
- * print_listint - prints all elements of a listint_t list
- * @h: pointer to head of list
- * Return: number of nodes
+ * insert_node - inserts node into a listint_t list
+ * @head: pointer to head of list
+ * @number: data for new node
+ * Return: new node created
  */
 listint_t *insert_node(listint_t **head, int number)
 {
