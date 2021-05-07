@@ -98,7 +98,7 @@ int count_nodes(heap_t *node)
 
 /**
  * swap_nodes - swap two nodes
- * @new: inserted node
+ * @new_node: inserted node
  * Return: nothing
  */
 void swap_nodes(heap_t **new_node)
