@@ -16,8 +16,12 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 			grid1[i][j] += grid2[i][j];
 		}
 	}
-
-	tumble(grid1);
+	while (!check_stable(grid1))
+	{
+		printf("=\n");
+		print_gridC(grid1);
+		tumble(grid1);
+	}
 }
 
 
@@ -72,37 +76,42 @@ void print_gridC(int grid[3][3])
  */
 void tumble(int grid[3][3])
 {
-	int i, j;
+	int array[9][2];
+	int i, j, arri = 0, arrj;
 
-	while (!check_stable(grid))
+	for (i = 0; i < 3; i++)
 	{
-		printf("=\n");
-		print_gridC(grid);
-		for (i = 0; i < 3; i++)
+		for (j = 0; j < 3; j++)
 		{
-			for (j = 0; j < 3; j++)
+			if (grid[i][j] > 3)
 			{
-				if (grid[i][j] > 3)
-				{
-					grid[i][j] -= 4;
-					if (i != 0)
-					{
-						grid[i - 1][j] += 1;
-					}
-					if (i != 2)
-					{
-						grid[i + 1][j] += 1;
-					}
-					if (j != 0)
-					{
-						grid[i][j - 1] += 1;
-					}
-					if (j != 2)
-					{
-						grid[i][j + 1] += 1;
-					}
-				}
+				array[arri][0] = i;
+				array[arri][1] = j;
+				arri++;
 			}
+		}
+	}
+	for (arrj = 0; arrj < arri; arrj++)
+	{
+		i = array[arrj][0];
+		j = array[arrj][1];
+		/*printf("coord: (%d, %d)\n", i, j);*/
+		grid[i][j] -= 4;
+		if (i != 0)
+		{
+			grid[i - 1][j] += 1;
+		}
+		if (i != 2)
+		{
+			grid[i + 1][j] += 1;
+		}
+		if (j != 0)
+		{
+			grid[i][j - 1] += 1;
+		}
+		if (j != 2)
+		{
+			grid[i][j + 1] += 1;
 		}
 	}
 }
