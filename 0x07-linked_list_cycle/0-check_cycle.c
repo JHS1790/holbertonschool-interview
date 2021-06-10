@@ -30,6 +30,6 @@ int check_cycle(listint_t *list)
 		last = last->next;
 		next = next->next->next;
 	}
-	
+
 	return (1);
 }
