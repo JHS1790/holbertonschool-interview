@@ -11,6 +11,5 @@
 int slide_line(int *line, size_t size, int direction);
 int slide_left(int *line, unsigned int starting_index, size_t size, unsigned int *farthest_slid);
 int slide_right(int *line, unsigned int starting_index, size_t size, unsigned int *farthest_slid);
-static void print_array(int const *array, size_t size);
 
 #endif /* SLIDE_H */
