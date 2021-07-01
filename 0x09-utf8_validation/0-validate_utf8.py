@@ -5,7 +5,7 @@ Main file for testing
 
 
 def validUTF8(data):
-    """ bitwise opperators are simpler than I anticipated """
+    """ doclines be doclining """
     count = 0
     for i in range(len(data)):
         if data[i] > 255:
