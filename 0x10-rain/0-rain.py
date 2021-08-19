@@ -5,24 +5,13 @@
 
 
 def rain(walls):
-    westWall = 0
-    eastWall = 0
     resevoirVolume = 0
-    while True:
-        if eastWall >= len(walls):
-            break
-        if westWall == eastWall:
-            eastWall += 1
-            continue
-        if walls[eastWall] == 0:
-            eastWall += 1
-            continue
-        if walls[westWall] == 0:
-            westWall += 1
-            continue
-        resevoirHeight = min(walls[westWall], walls[eastWall])
-        resevoirWidth = eastWall - westWall - 1
-        resevoirVolume += (resevoirHeight * resevoirWidth)
-        westWall = eastWall
-        eastWall += 1
+    for i in range(1, len(walls) - 1):
+        westWall = walls[i]
+        for j in range(i):
+            westWall = max(westWall, walls[j])
+        eastWall = walls[i]
+        for j in range(i + 1, len(walls)):
+            eastWall = max(eastWall, walls[j])
+        resevoirVolume += min(eastWall, westWall) - walls[i]
     return resevoirVolume
