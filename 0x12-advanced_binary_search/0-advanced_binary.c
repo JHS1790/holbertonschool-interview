@@ -32,7 +32,6 @@ int advanced_binary(int *array, size_t size, int value)
 
 	/* Actual Binary Search */
 	i = (size - 1) / 2;
-		printf("i value is: %zu\n", i);
 	if (array[i] == value)
 	{
 		if (i == 0 || (array[i - 1] < value))
