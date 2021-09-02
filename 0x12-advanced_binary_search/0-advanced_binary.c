@@ -12,12 +12,9 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	size_t i, offset = 0;
 	int ret_value;
-
-	/* Null Check */
+	
 	if (array == NULL || size == 0)
 		return (-1);
-
-	/* Print Array */
 	printf("Searching in array:");
 	for (i = 0; i < size; i++)
 	{
@@ -27,12 +24,8 @@ int advanced_binary(int *array, size_t size, int value)
 		if (i == size - 1)
 			printf("\n");
 	}
-
-	/* End check moved here because checker is stoopido */
 	if (size == 1 && array[0] != value)
 		return (-1);
-
-	/* Actual Binary Search */
 	i = (size - 1) / 2;
 	if (array[i] == value)
 	{
