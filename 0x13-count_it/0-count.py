@@ -12,7 +12,7 @@ headers = {'User-Agent': 'holberton_1790'}
 def count_words(subreddit, word_list, next_post=None):
     if not keyword_dict:
         for word in word_list:
-            keyword_dict[word] = 0
+            keyword_dict[word.lower()] = 0
     hot = requests.get(
         "https://www.reddit.com/r/{}/hot.json?after={}"
         .format(subreddit, next_post),
@@ -34,18 +34,16 @@ def count_words(subreddit, word_list, next_post=None):
     if next_post:
         count_words(subreddit, word_list, next_post)
     else:
-        combine_duplicate_keywords()
-        for keyword in sorted(keyword_dict):
-            if keyword_dict[keyword] is not 0:
-                print("{}: {}".format(keyword, keyword_dict[keyword]))
-
-
-def combine_duplicate_keywords():
-    dupe_keys = {}
-    for keyword_1 in keyword_dict:
-        for keyword_2 in keyword_dict:
-            if keyword_1.lower() == keyword_2 and keyword_1 != keyword_2:
-                dupe_keys[keyword_1] = keyword_dict[keyword_1]
-    for dupe_keyword in dupe_keys:
-        del keyword_dict[dupe_keyword]
-        keyword_dict[dupe_keyword.lower()] += dupe_keys[dupe_keyword]
+        lower_word_list = []
+        for word in word_list:
+            lower_word_list.append(word.lower())
+        for keyword in keyword_dict:
+            keyword_dict[keyword] = (
+                keyword_dict[keyword] * lower_word_list.count(keyword)
+                )
+        sorted_keys = sorted(
+            keyword_dict.items(), key=lambda x: x[1], reverse=True
+            )
+        for keyword in sorted_keys:
+            if keyword[1] is not 0:
+                print("{}: {}".format(keyword[0], keyword[1]))
