@@ -42,7 +42,7 @@ def count_words(subreddit, word_list, next_post=None):
                 keyword_dict[keyword] * lower_word_list.count(keyword)
                 )
         sorted_keys = sorted(
-            keyword_dict.items(), key=lambda x: x[1], reverse=True
+            sorted(keyword_dict).items(), key=lambda x: x[1], reverse=True
             )
         for keyword in sorted_keys:
             if keyword[1] is not 0:
