@@ -88,14 +88,21 @@ int heap_extract(heap_t **root)
 		return (0);
 
 	removedV = (*root)->n;
-	last_node = getLast(*root, getSize(*root));
 
-	swap(last_node, *root);
-	if (last_node->parent->left == last_node)
-		last_node->parent->left = NULL;
+	if ((*root)->left != NULL || (*root)->right != NULL)
+	{
+		last_node = getLast(*root, getSize(*root));
+		swap(last_node, *root);
+		if (last_node->parent->left == last_node)
+			last_node->parent->left = NULL;
+		else
+			last_node->parent->right = NULL;
+		free(last_node);
+		heapify(*root);
+	}
 	else
-		last_node->parent->right = NULL;
-	free(last_node);
-	heapify(*root);
+	{
+		*root = NULL;
+	}
 	return (removedV);
 }
