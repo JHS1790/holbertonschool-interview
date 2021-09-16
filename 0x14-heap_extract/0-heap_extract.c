@@ -102,6 +102,7 @@ int heap_extract(heap_t **root)
 	}
 	else
 	{
+		free(*root);
 		*root = NULL;
 	}
 	return (removedV);
