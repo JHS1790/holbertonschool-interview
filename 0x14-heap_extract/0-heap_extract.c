@@ -81,11 +81,14 @@ void heapify(heap_t *root)
  */
 int heap_extract(heap_t **root)
 {
-	int removedV = (*root)->n;
-	heap_t *last_node = getLast(*root, getSize(*root));
+	int removedV;
+	heap_t *last_node;
 
-	if (!(*root))
+	if ((*root) == NULL)
 		return (0);
+
+	removedV = (*root)->n;
+	last_node = getLast(*root, getSize(*root));
 
 	swap(last_node, *root);
 	if (last_node->parent->left == last_node)
