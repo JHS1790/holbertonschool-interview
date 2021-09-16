@@ -58,20 +58,25 @@ heap_t *getLast(heap_t *root, int size)
  */
 void heapify(heap_t *root)
 {
-	heap_t *max = NULL;
-	int first = 0;
+	int tmp;
+	heap_t *max = root;
 
-	while (max || !first)
+	if (root->left != NULL && root->left->n > max->n)
 	{
-		max = NULL;
-		first = 1;
-		if (root->left && root->left->n > root->n)
-			max = root->left;
-		if (root->right && root->right->n > root->n &&
-				(max && root->right->n > max->n))
-			max = root->right;
-		if (max)
-			root = swap(max, root);
+		max = root->left;
+	}
+
+	if (root->right != NULL && root->right->n > max->n)
+	{
+		max = root->right;
+	}
+
+	if (max != root)
+	{
+		tmp = root->n;
+		root->n = max->n;
+		max->n = tmp;
+		heapify(max);
 	}
 }
 /**
