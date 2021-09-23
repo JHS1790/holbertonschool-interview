@@ -8,70 +8,44 @@
  */
 int main(int argc, char *argv[])
 {
-	int *ans, *a, *b, i, j, tmp, l1, l2;
+	int *ans, *a, *b, i, j, l1, l2;
 	char *s1 = argv[1], *s2 = argv[2];
 
-	if (argc != 3)
-	{
-		_puts_recursion("Error");
-		exit (98);
-	}
-	if (!(check_if_str_is_int(argv[1])))
-	{
-		_puts_recursion("Error");
-		exit (98);
-	}
-	if (!(check_if_str_is_int(argv[2])))
-	{
-		_puts_recursion("Error");
-		exit (98);
-	}
-
+	error_handler(argc, argv);
 	l1 = array_len(argv[1]);
 	l2 = array_len(argv[2]);
 	ans = (int *) malloc((l1 + l2) * sizeof(int));
 	a = (int *) malloc((l1) * sizeof(int));
 	b = (int *) malloc((l2) * sizeof(int));
-
-	memset(ans, 0, sizeof(int));
-
-	for(i = l1-1, j=0; i>=0; i--, j++)
-    {
-        a[j] = s1[i]-'0';
-    }
-    for(i = l2-1, j=0; i>=0; i--, j++)
-    {
-        b[j] = s2[i]-'0';
-    }
-    for(i = 0; i < l2; i++)
-    {
-        for(j = 0; j < l1; j++)
-        {
-            ans[i + j] += b[i]*a[j];
-        }
-    }
-    for(i = 0; i < l1 + l2; i++)
-    {
-        tmp = ans[i]/10;
-        ans[i] = ans[i]%10;
-        ans[i+1] = ans[i+1] + tmp;
-    }
-    for(i = l1 + l2; i > 0; i--)
-    {
-        if(ans[i] > 0)
-            break;
-    }
-    for(; i >= 0; i--)
-    {
-        _putchar(ans[i] + '0');
-    }
-
+	for (i = l1 - 1, j = 0; i >= 0; i--, j++)
+	{
+		a[j] = s1[i] - '0';
+	}
+	for (i = l2 - 1, j = 0; i >= 0; i--, j++)
+	{
+		b[j] = s2[i] - '0';
+	}
+	for (i = 0; i < l2; i++)
+	{
+		for (j = 0; j < l1; j++)
+			ans[i + j] += b[i] * a[j];
+	}
+	for (i = 0; i < l1 + l2; i++)
+	{
+		ans[i + 1] = ans[i + 1] + (ans[i] / 10);
+		ans[i] = ans[i] % 10;
+	}
+	for (i = l1 + l2; i > 0; i--)
+	{
+		if (ans[i] > 0)
+			break;
+	}
+	for (; i >= 0; i--)
+		_putchar(ans[i] + '0');
 	printf("\n");
-
 	free(ans);
 	free(a);
 	free(b);
-
 	return (0);
 }
 
@@ -94,17 +68,18 @@ void _puts_recursion(char *s)
 /**
  * array_len - finds string length
  * @s: input string
+ * Return: by gooch
  */
 int array_len(char *s)
 {
 	if (!*s)
 	{
-		return(0);
+		return (0);
 	}
 	else
 	{
 		s++;
-		return(array_len(s) + 1);
+		return (array_len(s) + 1);
 	}
 }
 /**
@@ -125,6 +100,30 @@ int check_if_str_is_int(char *s)
 	else
 	{
 		s++;
-		return(check_if_str_is_int(s));
+		return (check_if_str_is_int(s));
+	}
+}
+
+/**
+ * error_handler - handles exceptions
+ * @argc: arg count
+ * @argv: arg value
+ */
+void error_handler(int argc, char *argv[])
+{
+	if (argc != 3)
+	{
+		_puts_recursion("Error");
+		exit(98);
+	}
+	if (!(check_if_str_is_int(argv[1])))
+	{
+		_puts_recursion("Error");
+		exit(98);
+	}
+	if (!(check_if_str_is_int(argv[2])))
+	{
+		_puts_recursion("Error");
+		exit(98);
 	}
 }

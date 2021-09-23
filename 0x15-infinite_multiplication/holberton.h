@@ -12,5 +12,6 @@ int _putchar(char c);
 void _puts_recursion(char *s);
 int check_if_str_is_int(char *s);
 int array_len(char *s);
+void error_handler(int argc, char *argv[]);
 
 #endif /* HOLBERTON_H */
