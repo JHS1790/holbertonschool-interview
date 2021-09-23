@@ -33,6 +33,8 @@ int main(int argc, char *argv[])
 	a = (int *) malloc((l1) * sizeof(int));
 	b = (int *) malloc((l2) * sizeof(int));
 
+	memset(ans, 0, sizeof(int));
+
 	for(i = l1-1, j=0; i>=0; i--, j++)
     {
         a[j] = s1[i]-'0';
@@ -54,14 +56,14 @@ int main(int argc, char *argv[])
         ans[i] = ans[i]%10;
         ans[i+1] = ans[i+1] + tmp;
     }
-    for(i = l1 + l2; i  > 0; i--)
+    for(i = l1 + l2; i >= 0; i--)
     {
         if(ans[i] > 0)
             break;
     }
     for(; i >= 0; i--)
     {
-        printf("%d",ans[i]);
+        _putchar(ans[i] + '0');
     }
 
 	printf("\n");
@@ -97,7 +99,7 @@ int array_len(char *s)
 {
 	if (!*s)
 	{
-		return(1);
+		return(0);
 	}
 	else
 	{
