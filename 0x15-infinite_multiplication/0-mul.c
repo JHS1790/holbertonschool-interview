@@ -14,9 +14,9 @@ int main(int argc, char *argv[])
 	error_handler(argc, argv);
 	l1 = array_len(argv[1]);
 	l2 = array_len(argv[2]);
-	ans = (int *) malloc((l1 + l2) * sizeof(int));
-	a = (int *) malloc((l1) * sizeof(int));
-	b = (int *) malloc((l2) * sizeof(int));
+	ans = (int *) malloc((l1 + l2 + 1) * sizeof(int));
+	a = (int *) malloc((l1 + 1) * sizeof(int));
+	b = (int *) malloc((l2 + 1) * sizeof(int));
 	for (i = l1 - 1, j = 0; i >= 0; i--, j++)
 	{
 		a[j] = s1[i] - '0';
