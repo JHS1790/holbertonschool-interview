@@ -8,11 +8,9 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, j , length = log10(9999.0);
-	char *result = (char *) malloc(length);
+	int i, j , length = result_len(argv[1], argv[2]);
+	char *result = (char *) malloc(length*sizeof(char));
 
-	UNUSED(argc);
-/**
 	if (argc != 3)
 	{
 		_puts_recursion("Error");
@@ -27,7 +25,8 @@ int main(int argc, char *argv[])
 	{
 		_puts_recursion("Error");
 		exit (98);
-	}*/
+	}
+
 	for(i = _len(argv[2]) - 1 ; i >= 0 ; i--)
 	{
 		for(j = _len(argv[1]) - j ; j >= 0 ; j--)
@@ -35,7 +34,9 @@ int main(int argc, char *argv[])
 			
 		}
 	}
+
 	free(result);
+
 	return (0);
 }
 
@@ -50,6 +51,18 @@ int _len(char *s)
 	return(0);
 }
 
+/**
+ * result_len - returns length of result of multiplication
+ * @s: string to lengthenify
+ * Retunr: length found
+ */
+int result_len(char *num1, char *num2)
+{
+	int sum = log10(atoi(num1)) + log10(atoi(num2)), result;
+
+	result = floor(sum) + 1;
+	return(result);
+}
 /**
  * _puts_recursion - puts a string
  * @s: input string
