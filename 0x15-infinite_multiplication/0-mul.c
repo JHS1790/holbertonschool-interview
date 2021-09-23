@@ -33,36 +33,38 @@ int main(int argc, char *argv[])
 	a = (int *) malloc((l1) * sizeof(int));
 	b = (int *) malloc((l2) * sizeof(int));
 
-	for(i = l1-1,j=0;i>=0;i--,j++)
+	for(i = l1-1, j=0; i>=0; i--, j++)
     {
         a[j] = s1[i]-'0';
     }
-    for(i = l2-1,j=0;i>=0;i--,j++)
+    for(i = l2-1, j=0; i>=0; i--, j++)
     {
         b[j] = s2[i]-'0';
     }
-    for(i = 0;i < l2;i++)
+    for(i = 0; i < l2; i++)
     {
-        for(j = 0;j < l1;j++)
+        for(j = 0; j < l1; j++)
         {
-            ans[i+j] += b[i]*a[j];
+            ans[i + j] += b[i]*a[j];
         }
     }
-    for(i = 0;i < l1+l2;i++)
+    for(i = 0; i < l1 + l2; i++)
     {
         tmp = ans[i]/10;
         ans[i] = ans[i]%10;
         ans[i+1] = ans[i+1] + tmp;
     }
-    for(i = l1+l2; i>= 0;i--)
+    for(i = l1 + l2; i  > 0; i--)
     {
         if(ans[i] > 0)
             break;
     }
-    for(;i >= 0;i--)
+    for(; i >= 0; i--)
     {
         printf("%d",ans[i]);
     }
+
+	printf("\n");
 
 	free(ans);
 	free(a);
