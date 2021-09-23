@@ -8,8 +8,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, j , length = 1;
-	char *result = (char *) malloc(length*sizeof(char));
+	int product;
+	char result[20000];
 
 	if (argc != 3)
 	{
@@ -27,28 +27,12 @@ int main(int argc, char *argv[])
 		exit (98);
 	}
 
-	for(i = _len(argv[2]) - 1 ; i >= 0 ; i--)
-	{
-		for(j = _len(argv[1]) - j ; j >= 0 ; j--)
-		{
-			
-		}
-	}
+	product = atoi(argv[1]) * atoi(argv[2]);
+	snprintf(result, 6000, "%i", product);
 
-	free(result);
+	_puts_recursion(result);
 
-	return (atoi(argv[1]) * atoi(argv[2]));
-}
-
-/**
- * _len - returns length of string
- * @s: string to lengthenify
- * Retunr: length found
- */
-int _len(char *s)
-{
-	UNUSED(*s);
-	return(0);
+	return (0);
 }
 
 /**
