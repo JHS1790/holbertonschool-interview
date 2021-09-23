@@ -8,8 +8,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int product;
-	char result[20000];
+	int *ans, *a, *b, i, j, tmp, l1, l2;
+	char *s1 = argv[1], *s2 = argv[2];
 
 	if (argc != 3)
 	{
@@ -27,10 +27,46 @@ int main(int argc, char *argv[])
 		exit (98);
 	}
 
-	product = atoi(argv[1]) * atoi(argv[2]);
-	snprintf(result, 6000, "%i", product);
+	l1 = array_len(argv[1]);
+	l2 = array_len(argv[2]);
+	ans = (int *) malloc((l1 + l2) * sizeof(int));
+	a = (int *) malloc((l1) * sizeof(int));
+	b = (int *) malloc((l2) * sizeof(int));
 
-	_puts_recursion(result);
+	for(i = l1-1,j=0;i>=0;i--,j++)
+    {
+        a[j] = s1[i]-'0';
+    }
+    for(i = l2-1,j=0;i>=0;i--,j++)
+    {
+        b[j] = s2[i]-'0';
+    }
+    for(i = 0;i < l2;i++)
+    {
+        for(j = 0;j < l1;j++)
+        {
+            ans[i+j] += b[i]*a[j];
+        }
+    }
+    for(i = 0;i < l1+l2;i++)
+    {
+        tmp = ans[i]/10;
+        ans[i] = ans[i]%10;
+        ans[i+1] = ans[i+1] + tmp;
+    }
+    for(i = l1+l2; i>= 0;i--)
+    {
+        if(ans[i] > 0)
+            break;
+    }
+    for(;i >= 0;i--)
+    {
+        printf("%d",ans[i]);
+    }
+
+	free(ans);
+	free(a);
+	free(b);
 
 	return (0);
 }
@@ -51,6 +87,22 @@ void _puts_recursion(char *s)
 	_puts_recursion(s);
 }
 
+/**
+ * array_len - finds string length
+ * @s: input string
+ */
+int array_len(char *s)
+{
+	if (!*s)
+	{
+		return(1);
+	}
+	else
+	{
+		s++;
+		return(array_len(s) + 1);
+	}
+}
 /**
  * check_if_str_is_int - checks if the string is an int or not
  * @s: string to check

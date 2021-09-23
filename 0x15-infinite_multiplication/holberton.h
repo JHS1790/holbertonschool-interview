@@ -11,7 +11,6 @@
 int _putchar(char c);
 void _puts_recursion(char *s);
 int check_if_str_is_int(char *s);
-int _len(char *s);
-char* itoa(int, char* , int);
+int array_len(char *s);
 
 #endif /* HOLBERTON_H */
