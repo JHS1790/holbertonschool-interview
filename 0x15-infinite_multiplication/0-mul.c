@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
         ans[i] = ans[i]%10;
         ans[i+1] = ans[i+1] + tmp;
     }
-    for(i = l1 + l2; i >= 0; i--)
+    for(i = l1 + l2; i > 0; i--)
     {
         if(ans[i] > 0)
             break;
