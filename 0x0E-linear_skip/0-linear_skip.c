@@ -1,7 +1,8 @@
 #include "search.h"
 
 /**
- * linear_skip -  a function that searches for a value in a sorted skip list of integers.
+ * linear_skip -  a function that searches for a value in
+ *                a sorted skip list of integers.
  *
  * @list: a pointer to the head of the skip list to search in
  * @value: the value to search for
@@ -31,13 +32,15 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		if (first_node->express->n >= value)
 		{
 			second_node = first_node->express;
-			printf("Value checked at index [%lu] = [%d]\n", second_node->index, second_node->n);
+			printf("Value checked at index [%lu] = [%d]\n",
+					second_node->index, second_node->n);
 			printf("Value found between indexes [%lu] and [%lu]\n",
 			       first_node->index, second_node->index);
 			break;
 		}
 		first_node = first_node->express;
-		printf("Value checked at index [%lu] = [%d]\n", first_node->index, first_node->n);
+		printf("Value checked at index [%lu] = [%d]\n",
+				first_node->index, first_node->n);
 	}
 
 	return (check_inbetween(first_node, value));
