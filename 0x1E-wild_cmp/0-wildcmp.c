@@ -10,7 +10,7 @@
 int wildcmp(char *s1, char *s2)
 {
 	int comp1, comp2;
- 
+
 	if (!*s1)
 	{
 		if (*s2 == '*')
