@@ -8,7 +8,7 @@ def pascal_triangle(n):
     if n <= 0:
         return pascal
     previous_row = [1]
-    for row_index in range(n):
+    for row_number in range(n):
         row = []
         if row_number == 0:
             row = [1]
