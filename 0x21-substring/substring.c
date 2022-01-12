@@ -1,12 +1,16 @@
 #include "substring.h"
 
 /**
- * find_substring - a function that finds all the possible substrings containing a list of words, within a given string
+ * find_substring - a function that finds all the possible substrings
+ *                  containing a list of words, within a given string
  * @s: the string to scan
- * @words: the array of words all substrings must be a concatenation arrangement of
+ * @words: the array of words all substrings must be a concatenation
+ *         arrangement of
  * @nb_words: the number of elements in the array words
- * @n: holds the address at which to store the number of elements in the returned array
- * Return: an allocated array, storing each index in s, at which a substring was found. If no solution is found, NULL can be returned
+ * @n: holds the address at which to store the number of elements in
+ *     the returned array
+ * Return: an allocated array, storing each index in s, at which a
+ *         substring was found. If no solution is found, NULL can be returned
  */
 int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
@@ -46,7 +50,7 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
  * @s: see find_substring
  * @words: see find_substring
  * @nb_words: see find_substring
- * @word_len: the length the elements in words
+ * @wordLen: the length the elements in words
  * Return: True if full match, false if not
  */
 bool match(char const *s, char const **words, int nb_words, int wordLen)
