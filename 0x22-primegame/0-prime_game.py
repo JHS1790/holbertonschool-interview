@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"Bingo bango bongo I don't want to leave the congo"
 
 def isWinner(x, nums):
     "Playing this game instead of working on my project"
@@ -28,6 +28,7 @@ def isWinner(x, nums):
 
 
 def roundTurns(x, roundRange):
+    "Playing this game instead of working on my project"
     turns = 1
 
     while(True):
@@ -54,6 +55,7 @@ def roundTurns(x, roundRange):
 
 
 def checkPrime(num):
+    "Playing this game instead of working on my project"
     flag = False
 
     if num > 1:
